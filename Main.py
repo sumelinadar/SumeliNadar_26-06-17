@@ -30,7 +30,7 @@ class Main:
                 if not details:
                     return self.warning + "Kindly enter student record to be added in a proper format"
                 else:
-                    sd.StudentData().studentData(details)
+                    return sd.StudentData().studentData(details)
             if action == 2:
                 return g.GetInformation().dataFrame('input/cache_file.tsv')
 
