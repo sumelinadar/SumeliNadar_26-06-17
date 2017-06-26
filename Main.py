@@ -18,21 +18,22 @@ class Main:
         if main_action == 1:
             action = input("Enter the action code to be performed on cache: " + self.options + "1. Update, 2. Delete, 3. Read" + self.end)
             if action == 1:
-                print u.CacheUpdate().updateCache(s.StudentDetails().studentDetails("Update"))
+                return u.CacheUpdate().updateCache(s.StudentDetails().studentDetails("Update"))
             if action == 2:
-                print d.CacheDelete().deleteCache(s.StudentDetails().studentDetails("Delete"))
+                return d.CacheDelete().deleteCache(s.StudentDetails().studentDetails("Delete"))
             if action == 3:
-                print self.update
-                print g.GetInformation().dataFrame('input/cache_file.tsv')
-                print self.end
+                return g.GetInformation().dataFrame('input/cache_file.tsv')
         if main_action == 2:
-            details = raw_input("Enter the student details in following order in a single row with space separated: " + self.OKGREEN + "student_id, division, marks" + self.end).split()
-            if not details:
-                print self.warning + "Kindly enter student record to be added in a proper format"
-            else:
-                sd.StudentData().studentData(details)
-
+            action = input("Enter the action code to be performed on student database: " + self.options + "1. Update, 3. Read" + self.end)
+            if action == 1:
+                details = raw_input("Enter the student details in following order in a single row with space separated: " + self.OKGREEN + "student_id, division, marks" + self.end).split()
+                if not details:
+                    return self.warning + "Kindly enter student record to be added in a proper format"
+                else:
+                    sd.StudentData().studentData(details)
+            if action == 2:
+                return g.GetInformation().dataFrame('input/cache_file.tsv')
 
 if __name__ == '__main__':
     m = Main()
-    m.userInput()
+    print m.userInput()
