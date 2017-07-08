@@ -36,7 +36,8 @@
 
       if (typeof $.cookie("realtime-chat-nickname") === 'undefined') {
         window.location = "/login"
-      } else {
+      }
+      else {
         $("#sendMessage").on("click", function () {
           sendMessage()
         });
@@ -47,6 +48,11 @@
           }
         });
       }
+
+      $("#logOut").on("click", function () {
+          $.cookie("realtime-chat-nickname", "", -1);
+          window.location = "/login";
+        });
 
       function sendMessage() {
         $container = $('.media-list');
@@ -77,6 +83,7 @@
   <div class="container">
     <div class="row " style="padding-top:40px;">
       <h3 class="text-center">Realtime Chat Application with Flask, SocketIO</h3>
+      <h1><button class="btn btn-info" type="button" id="logOut">Log Out</button></h1>
       <br/><br/>
 
       <div class="col-md-12">
